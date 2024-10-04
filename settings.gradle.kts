@@ -21,4 +21,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "Motus"
 include(":app")
- 
+include(":viewmodel")
+include(":model")
+include(":data")
