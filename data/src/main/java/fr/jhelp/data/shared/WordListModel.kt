@@ -1,5 +1,6 @@
 package fr.jhelp.data.shared
 
+import fr.jhelp.common.NumberLetters
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.flow.StateFlow
 

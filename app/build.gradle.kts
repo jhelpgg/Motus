@@ -57,6 +57,7 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(project(":viewmodel"))
     implementation(project(":injector"))
+    implementation(project(":common"))
 
     testImplementation(libs.junit)
 

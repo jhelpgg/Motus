@@ -1,4 +1,4 @@
-package fr.jhelp.data.shared
+package fr.jhelp.common
 
 enum class NumberLetters(val number:Int)
 {

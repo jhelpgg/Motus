@@ -13,6 +13,9 @@ The game is composed of several module :
 - `viewmodel` : containing the game view models
 - `model` : containing the main model
 - `data` : containing the data source
+- `injector` : containing the dependency injection system
+- `tools` : containing the tools used by the other modules
+- `common` : containing the common structures used by the other modules
 
 Their interaction can be schematized as follow :
 ![Interaction between modules](doc/ModulesInteraction.png)
