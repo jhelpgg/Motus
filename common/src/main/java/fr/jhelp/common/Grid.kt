@@ -30,7 +30,7 @@ class Grid(val numberLetters: NumberLetters, val numberTries: Int)
         else
         {
             this.currentWordIndex++
-            true
+            this.currentWordIndex < this.numberTries
         }
     }
 }

@@ -12,7 +12,8 @@ import kotlinx.coroutines.flow.StateFlow
 
 class WordListDummy(override val numberLetters: StateFlow<NumberLetters>,
                     private val setNumberLettersAction: (NumberLetters) -> Unit = {},
-                    private val oneWordAction: suspend () -> String = { "" }) : WordListModel
+                    private val oneWordAction: suspend () -> String = { "" },
+                    private val wordExistsAction: suspend (String) -> Boolean = { true }) : WordListModel
 {
     constructor(numberLetters: NumberLetters = NumberLetters.SIX) :
             this(MutableStateFlow(numberLetters),
@@ -20,7 +21,7 @@ class WordListDummy(override val numberLetters: StateFlow<NumberLetters>,
                  {
                      when (numberLetters)
                      {
-                         NumberLetters.SIX   -> "PARTIE"
+                         NumberLetters.SIX -> "PARTIE"
                          NumberLetters.SEVEN -> "PREMIER"
                          NumberLetters.EIGHT -> "PREMIERE"
                      }
@@ -30,6 +31,9 @@ class WordListDummy(override val numberLetters: StateFlow<NumberLetters>,
     {
         this.setNumberLettersAction(numberLetters)
     }
+
+    override fun wordExists(word: String): Deferred<Boolean> =
+        CoroutineScope(Dispatchers.Immediate).async { this@WordListDummy.wordExistsAction(word) }
 
     override fun oneWord(): Deferred<String> =
         CoroutineScope(Dispatchers.Immediate).async { this@WordListDummy.oneWordAction() }
