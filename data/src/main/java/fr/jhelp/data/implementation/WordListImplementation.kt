@@ -1,7 +1,7 @@
 package fr.jhelp.data.implementation
 
 import android.content.Context
-import fr.jhelp.data.shared.NumberLetters
+import fr.jhelp.common.NumberLetters
 import fr.jhelp.data.shared.WordListModel
 import fr.jhelp.injector.injected
 import kotlinx.coroutines.CoroutineScope
@@ -21,7 +21,7 @@ internal class WordListImplementation : WordListModel
     private val numberLettersMutable = MutableStateFlow(NumberLetters.SIX)
     private val mutex = Mutex()
     private val words = ArrayList<String>()
-    private lateinit var deffered: Deferred<String>
+    private var deffered: Deferred<String>
 
     override val numberLetters: StateFlow<NumberLetters> = this.numberLettersMutable.asStateFlow()
 

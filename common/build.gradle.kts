@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "fr.jhelp.model"
+    namespace = "fr.jhelp.common"
     compileSdk = 34
 
     defaultConfig {
@@ -30,15 +30,11 @@ android {
 }
 
 dependencies {
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-    implementation(project(":data"))
-    implementation(project(":injector"))
-    implementation(project(":common"))
-
     testImplementation(libs.junit)
-
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }

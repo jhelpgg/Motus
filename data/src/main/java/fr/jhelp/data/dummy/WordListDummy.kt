@@ -1,6 +1,6 @@
 package fr.jhelp.data.dummy
 
-import fr.jhelp.data.shared.NumberLetters
+import fr.jhelp.common.NumberLetters
 import fr.jhelp.data.shared.WordListModel
 import fr.jhelp.tools.Immediate
 import kotlinx.coroutines.CoroutineScope
@@ -20,7 +20,7 @@ class WordListDummy(override val numberLetters: StateFlow<NumberLetters>,
                  {
                      when (numberLetters)
                      {
-                         NumberLetters.SIX -> "PARTIE"
+                         NumberLetters.SIX   -> "PARTIE"
                          NumberLetters.SEVEN -> "PREMIER"
                          NumberLetters.EIGHT -> "PREMIERE"
                      }

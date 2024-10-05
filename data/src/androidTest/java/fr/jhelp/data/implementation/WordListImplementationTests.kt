@@ -3,11 +3,8 @@ package fr.jhelp.data.implementation
 import android.content.Context
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
-import fr.jhelp.data.shared.NumberLetters
+import fr.jhelp.common.NumberLetters
 import fr.jhelp.injector.inject
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert
 import org.junit.Test
