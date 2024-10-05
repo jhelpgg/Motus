@@ -11,4 +11,6 @@ interface WordListModel
     fun setNumberLetters(numberLetters: NumberLetters)
 
     fun oneWord() : Deferred<String>
+
+    fun wordExists(word: String) : Deferred<Boolean>
 }

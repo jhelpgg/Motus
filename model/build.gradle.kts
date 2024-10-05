@@ -35,6 +35,7 @@ dependencies {
     implementation(libs.material)
     implementation(project(":data"))
     implementation(project(":injector"))
+    implementation(project(":tools"))
     implementation(project(":common"))
 
     testImplementation(libs.junit)

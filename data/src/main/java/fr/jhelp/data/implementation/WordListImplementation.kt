@@ -21,7 +21,7 @@ internal class WordListImplementation : WordListModel
     private val numberLettersMutable = MutableStateFlow(NumberLetters.SIX)
     private val mutex = Mutex()
     private val words = ArrayList<String>()
-    private var deffered: Deferred<String>
+    private var deffered: Deferred<*>
 
     override val numberLetters: StateFlow<NumberLetters> = this.numberLettersMutable.asStateFlow()
 
@@ -29,7 +29,6 @@ internal class WordListImplementation : WordListModel
     {
         this.deffered = CoroutineScope(Dispatchers.IO).async {
             this@WordListImplementation.mutex.withLock { this@WordListImplementation.loadWords() }
-            ""
         }
     }
 
@@ -44,7 +43,6 @@ internal class WordListImplementation : WordListModel
                     this@WordListImplementation.numberLettersMutable.value = numberLetters
                     this@WordListImplementation.loadWords()
                 }
-                ""
             }
         }
     }
@@ -52,14 +50,29 @@ internal class WordListImplementation : WordListModel
     override fun oneWord(): Deferred<String>
     {
         val deferred = this.deffered
-        this.deffered = CoroutineScope(Dispatchers.Default).async {
+        val deferredString = CoroutineScope(Dispatchers.Default).async {
             deferred.await()
             val word = this@WordListImplementation.mutex.withLock {
                 this@WordListImplementation.words.random()
             }
             word
         }
-        return this.deffered
+        this.deffered = deferredString
+        return deferredString
+    }
+
+    override fun wordExists(word: String): Deferred<Boolean>
+    {
+        val deferred = this.deffered
+        val deferredBoolean = CoroutineScope(Dispatchers.Default).async {
+            deferred.await()
+            val exists = this@WordListImplementation.mutex.withLock {
+                this@WordListImplementation.words.contains(word)
+            }
+            exists
+        }
+        this.deffered = deferredBoolean
+        return deferredBoolean
     }
 
     private fun loadWords()

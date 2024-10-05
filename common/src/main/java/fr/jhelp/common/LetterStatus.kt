@@ -9,5 +9,6 @@ enum class LetterStatus
     PROPOSED, // Letter proposed
     WELL_PLACED, // Letter well placed
     MISPLACED, // Letter misplaced
-    NOT_PRESENT // Letter not present
+    NOT_PRESENT, // Letter not present
+    INVALID // Letter invalid
 }
