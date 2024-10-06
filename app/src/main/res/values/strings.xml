@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Motus</string>
+    <string name="newGame">New game</string>
+    <string name="nextNumberLetters">Next number letters %d</string>
+    <string name="previousNumberLetters">Previous number letters %d</string>
 </resources>
