@@ -2,9 +2,9 @@ package fr.jhelp.viewmodel.dummy
 
 import fr.jhelp.viewmodel.shared.WordPropositionModel
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.flow.StateFlow
 
-class WordPropositionDummy(override val active: SharedFlow<Boolean>,
+class WordPropositionDummy(override val active: StateFlow<Boolean>,
                            private val proposeWordAction: (String) -> Unit = {}) : WordPropositionModel
 {
     constructor(active: Boolean) : this(MutableStateFlow(active))

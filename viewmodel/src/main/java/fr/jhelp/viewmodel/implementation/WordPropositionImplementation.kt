@@ -8,7 +8,9 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 internal class WordPropositionImplementation : WordPropositionModel
@@ -16,7 +18,7 @@ internal class WordPropositionImplementation : WordPropositionModel
     private val motusService: MotusService by injected<MotusService>()
 
     private val activeMutable = MutableStateFlow<Boolean>(true)
-    override val active: SharedFlow<Boolean> = this.activeMutable.asSharedFlow()
+    override val active: StateFlow<Boolean> = this.activeMutable.asStateFlow()
 
     init
     {

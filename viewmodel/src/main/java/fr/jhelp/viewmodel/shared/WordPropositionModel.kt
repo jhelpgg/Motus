@@ -1,10 +1,10 @@
 package fr.jhelp.viewmodel.shared
 
-import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.flow.StateFlow
 
 interface WordPropositionModel
 {
-    val active : SharedFlow<Boolean>
+    val active: StateFlow<Boolean>
 
     fun proposeWord(word: String)
 }
