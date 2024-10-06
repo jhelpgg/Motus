@@ -2,7 +2,7 @@ package fr.jhelp.common
 
 enum class GameStatus
 {
-WAITING,
+    WAITING,
     PLAYING,
     WIN,
     LOST

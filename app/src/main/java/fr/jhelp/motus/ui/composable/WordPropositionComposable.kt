@@ -1,8 +1,5 @@
 package fr.jhelp.motus.ui.composable
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
@@ -14,7 +11,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
@@ -30,6 +26,9 @@ import fr.jhelp.motus.ui.theme.MotusTheme
 import fr.jhelp.viewmodel.dummy.WordPropositionDummy
 import fr.jhelp.viewmodel.shared.WordPropositionModel
 
+/**
+ * Composable that show the word proposition in game
+ */
 class WordPropositionComposable
 {
     private val wordPropositionModel: WordPropositionModel by injected<WordPropositionModel>()
@@ -53,7 +52,7 @@ class WordPropositionComposable
                           imeAction = ImeAction.None
                                                        ),
                       onValueChange = { wordTyped -> word = wordTyped.trim().uppercase() },
-                      modifier = Modifier.constrainAs(textFiled){
+                      modifier = Modifier.constrainAs(textFiled) {
                           width = Dimension.fillToConstraints
                           height = Dimension.wrapContent
 
@@ -69,7 +68,7 @@ class WordPropositionComposable
                     this@WordPropositionComposable.wordPropositionModel.proposeWord(word)
                     word = ""
                 },
-                modifier = Modifier.constrainAs(button){
+                modifier = Modifier.constrainAs(button) {
                     width = Dimension.wrapContent
                     height = Dimension.wrapContent
 

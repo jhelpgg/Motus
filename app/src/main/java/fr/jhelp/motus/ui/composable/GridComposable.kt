@@ -17,6 +17,9 @@ import fr.jhelp.motus.ui.theme.MotusTheme
 import fr.jhelp.viewmodel.dummy.GridDummy
 import fr.jhelp.viewmodel.shared.GridModel
 
+/**
+ * Composable for show the game grid
+ */
 class GridComposable
 {
     private val gridModel: GridModel by injected<GridModel>()

@@ -14,6 +14,9 @@ import fr.jhelp.motus.ui.theme.MotusTheme
 import fr.jhelp.motus.ui.theme.Typography
 import fr.jhelp.motus.ui.theme.White
 
+/**
+ * Composable for show a letter depends on its status
+ */
 @Composable
 fun LetterComposable(letter: Letter, modifier: Modifier = Modifier)
 {

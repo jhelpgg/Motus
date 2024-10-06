@@ -30,6 +30,9 @@ import fr.jhelp.viewmodel.dummy.GameSettingDummy
 import fr.jhelp.viewmodel.shared.GameSettingInformation
 import fr.jhelp.viewmodel.shared.GameSettingModel
 
+/**
+ * Composable to show the game settings and manage them
+ */
 class GameSettingComposable
 {
     private val gameSettingModel: GameSettingModel by injected<GameSettingModel>()
