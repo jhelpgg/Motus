@@ -9,6 +9,9 @@ import fr.jhelp.common.LetterStatus
 import fr.jhelp.common.WordInformation
 import fr.jhelp.motus.ui.theme.MotusTheme
 
+/**
+ * Composable for show a word information
+ */
 @Composable
 fun WordComposable(wordInformation: WordInformation, modifier: Modifier = Modifier)
 {
@@ -64,7 +67,6 @@ fun InvalidWordComposable()
         WordComposable(WordInformation(Array<Letter>(6) { Letter(' ', LetterStatus.INVALID) }))
     }
 }
-
 
 private fun letterStatus(index: Int): LetterStatus
 {

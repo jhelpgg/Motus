@@ -6,8 +6,7 @@ package fr.jhelp.common
 class Grid(val numberLetters: NumberLetters, val numberTries: Int)
 {
     private val words = Array<Word>(this.numberTries) { Word(this.numberLetters) }
-    var currentWordIndex = 0
-        private set
+    private var currentWordIndex = 0
 
     operator fun get(index: Int): Word = this.words[index]
 
