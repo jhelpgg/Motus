@@ -2,6 +2,7 @@ package fr.jhelp.motus.ui.composable
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
@@ -20,6 +21,8 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.constraintlayout.compose.Dimension
 import fr.jhelp.injector.inject
 import fr.jhelp.injector.injected
 import fr.jhelp.motus.R
@@ -38,12 +41,8 @@ class WordPropositionComposable
         // Trick for cumulate word typed
         var word: String by remember { mutableStateOf("") }
 
-        Column(
-            verticalArrangement = Arrangement.Bottom,
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = modifier
-              ) {
-
+        ConstraintLayout(modifier = modifier) {
+            val (textFiled, button) = this.createRefs()
             TextField(enabled = active,
                       value = word,
                       keyboardActions = KeyboardActions { this.defaultKeyboardAction(ImeAction.None) },
@@ -53,13 +52,31 @@ class WordPropositionComposable
                           keyboardType = KeyboardType.Text,
                           imeAction = ImeAction.None
                                                        ),
-                      onValueChange = { wordTyped -> word = wordTyped.trim().uppercase() })
+                      onValueChange = { wordTyped -> word = wordTyped.trim().uppercase() },
+                      modifier = Modifier.constrainAs(textFiled){
+                          width = Dimension.fillToConstraints
+                          height = Dimension.wrapContent
+
+                          // top free
+                          start.linkTo(parent.start)
+                          end.linkTo(button.start)
+                          bottom.linkTo(parent.bottom)
+                      })
 
             Button(
                 enabled = active,
                 onClick = {
                     this@WordPropositionComposable.wordPropositionModel.proposeWord(word)
                     word = ""
+                },
+                modifier = Modifier.constrainAs(button){
+                    width = Dimension.wrapContent
+                    height = Dimension.wrapContent
+
+                    top.linkTo(parent.top)
+                    // start free
+                    end.linkTo(parent.end)
+                    bottom.linkTo(parent.bottom)
                 }) {
                 Text(text = stringResource(id = R.string.submit))
             }
@@ -67,7 +84,7 @@ class WordPropositionComposable
     }
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, widthDp = 400)
 @Composable
 fun WordPropositionComposablePreview()
 {
